@@ -1,0 +1,8 @@
+TODO:
+listează toate dependențele:
+Flask
+Flask-Login
+Flask-SQLAlchemy
+python-dotenv
+Leaflet (CDN)
+etc.
