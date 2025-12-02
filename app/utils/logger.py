@@ -1,4 +1,11 @@
-# TODO:
-# configurează logging către logs/app.log
-# definește nivele: INFO, WARNING, ERROR
-# wrapper pentru a loga evenimente importante (login, rezervări, schimbare status loc)
+"""
+Configurarea sistemului de loguri.
+
+TODO (Task 1 / infrastructură):
+- Configurează logging în logs/app.log folosind modulul logging.
+- Setează formatul mesajelor (timestamp, nivel, modul etc.).
+"""
+
+def configure_logging(app):
+    # TODO (Task 1): implementează configurarea log-urilor aici
+    pass

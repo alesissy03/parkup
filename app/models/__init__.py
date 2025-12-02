@@ -1,10 +1,13 @@
-# TODO: importă și expune toate modelele SQLAlchemy,
-# ca să poți face from app.models import User, ParkingLot, ParkingSpot, Reservation
+"""
+Pachetul models reunește toate modelele SQLAlchemy.
+
+TODO (Task 2):
+- Importă și expune User, ParkingLot, ParkingSpot, Reservation.
+"""
 
 from .user import User
 from .parking_lot import ParkingLot
 from .parking_spot import ParkingSpot
 from .reservation import Reservation
 
-# (opțional) listă de export explicită
 __all__ = ["User", "ParkingLot", "ParkingSpot", "Reservation"]

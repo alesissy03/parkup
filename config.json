@@ -1,3 +1,6 @@
 {
-    "TODO": "adaugă setări: db_url, default_zoom, default_center ([lat, lng]), poate fi extins cu SECRET_KEY sau foldere speciale"
+  "//": "TODO (Task 1): completează valorile reale: db_url, default_zoom, default_center",
+  "db_url": "sqlite:///parking.db",
+  "default_zoom": 16,
+  "default_center": [44.435, 26.05]
 }

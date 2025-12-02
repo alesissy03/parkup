@@ -1,5 +1,4 @@
-// TODO:
-// inițializează Leaflet.draw
-// permite creare/editare/ștergere poligoane
-// trimite GeoJSON către endpoint-ul admin
-// validează că utilizatorul este admin
+// TODO (Task 6):
+// - initializează Leaflet.draw pe hartă
+// - trimite poligoanele desenate către /api/admin/polygons
+console.log("admin_draw.js – TODO Task 6");

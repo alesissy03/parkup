@@ -1,4 +1,4 @@
-// TODO:
-// AJAX login / register
-// gestionează localStorage/session pentru token user
-// actualizează UI după autentificare
+// TODO (Task 5):
+// - trimite cereri POST la /api/auth/register și /api/auth/login
+// - gestionează erorile și actualizează UI-ul
+console.log("auth.js – TODO Task 5");

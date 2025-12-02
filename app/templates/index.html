@@ -1,5 +1,13 @@
-<!-- TODO:
-pagina principală
-include div-ul „map” pentru Leaflet
-bara laterală: login/register/data utilizator
-include map.js -->
+{% extends "base.html" %}
+
+{% block title %}ParkUPB – Harta{% endblock %}
+
+{% block content %}
+  <!-- TODO (Task 7): div pentru hartă, div pentru sidebar info parcări -->
+  <div id="map"></div>
+  <div id="sidebar">
+    <!-- TODO (Task 5, 7, 8): afișare informații user și parcări -->
+  </div>
+
+  <!-- TODO (Task 7): include map.js -->
+{% endblock %}
