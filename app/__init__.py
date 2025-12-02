@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 # TODO (Task 4): importă load_config, extensii și blueprint-uri
 from .config import load_config
@@ -30,6 +30,9 @@ def create_app(config_name: str = "development"):
     # TODO (Task 4): înregistrează blueprint-urile API
     register_blueprints(app)
 
-    # TODO (Task 7): definește ruta principală care rand-ează index.html cu harta
-
+    @app.route("/")
+    def index():
+        # TODO (Task 7): înlocuiește cu harta reală și UI
+        return render_template("index.html")
+    
     return app

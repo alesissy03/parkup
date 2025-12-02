@@ -1,13 +1,34 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ParkUPB – Harta</title>
+    <!-- TODO (Task 4): include CSS (main.css, map.css) și Leaflet CSS -->
+  </head>
+  <body>
+    <div id="app">
+      <div id="map">
+        <!-- TODO (Task 7): harta Leaflet -->
+      </div>
 
-{% block title %}ParkUPB – Harta{% endblock %}
+      <aside id="sidebar">
+        <section id="auth-section">
+          <!-- TODO (Task 5): login / register / user info -->
+          <h2>Autentificare</h2>
+        </section>
 
-{% block content %}
-  <!-- TODO (Task 7): div pentru hartă, div pentru sidebar info parcări -->
-  <div id="map"></div>
-  <div id="sidebar">
-    <!-- TODO (Task 5, 7, 8): afișare informații user și parcări -->
-  </div>
+        <section id="filters-section">
+          <!-- TODO (Task 8): filtre după parking lot, status, tip -->
+          <h2>Filtre</h2>
+        </section>
 
-  <!-- TODO (Task 7): include map.js -->
-{% endblock %}
+        <section id="reservations-section">
+          <!-- TODO (Task 7/9/10): rezervare curentă + rezervări anterioare -->
+          <h2>Rezervările mele</h2>
+        </section>
+      </aside>
+    </div>
+
+    <!-- TODO (Task 7): include JS (Leaflet + static/js/map.js, auth.js) -->
+  </body>
+</html>

@@ -15,4 +15,18 @@ db = SQLAlchemy()
 # TODO (Task 5): instanța LoginManager pentru gestionarea sesiunilor de utilizator
 login_manager = LoginManager()
 
-# TODO (Task 5): configurează login_manager.login_view și alte mesaje implicite
+# TODO (Task 5): configurează pagina de login (când vei avea una)
+login_manager.login_view = "auth.login"
+
+@login_manager.user_loader
+def load_user(user_id):
+    """
+    TODO (Task 5):
+    - Înlocuiește acest placeholder cu logica reală:
+        from app.models import User
+        return User.query.get(int(user_id))
+
+    Deocamdată returnează None ca să nu mai arunce Flask-Login
+    excepția 'Missing user_loader or request_loader'.
+    """
+    return None
