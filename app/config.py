@@ -1,27 +1,40 @@
-"""
-Configurația aplicației.
+import json
+from pathlib import Path
 
-TODO (Task 1):
-- Citește config.json (db_url, default_zoom, default_center, etc.)
-- Eventual citește și variabile din .env (SECRET_KEY, ENV, etc.)
-- Expune o funcție load_config(env) care returnează un dict de configurare
-"""
+# directorul de bază al proiectului (folderul "parkupb")
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 def load_config(env: str = "development") -> dict:
     """
-    TODO (Task 1):
-    - în funcție de `env`, construiește și întoarce un dict cu setările aplicației:
-        - SQLALCHEMY_DATABASE_URI
-        - SECRET_KEY
-        - DEFAULT_ZOOM
-        - DEFAULT_CENTER
-        - alte opțiuni (DEBUG, TESTING, etc.)
+    Task 1 - MINIM NECESAR ca să pornească aplicația:
+    - citește config.json
+    - setează SQLALCHEMY_DATABASE_URI
+    - pune câteva valori default
     """
-    config = {}
+    config_path = BASE_DIR / "config.json"
 
-    # TODO (Task 1): încarcă valori din config.json
-    # TODO (Task 1): setează SQLALCHEMY_DATABASE_URI (folosind db_url sau default SQLite)
-    # TODO (Task 1): setează SECRET_KEY (temporar hardcodat sau din .env)
-    # TODO (Task 1): setează alte opțiuni utile (ex: SQLALCHEMY_TRACK_MODIFICATIONS=False)
+    data = {}
+    if config_path.exists():
+        with open(config_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+    # din config.json ai deja:
+    # "db_url": "sqlite:///parking.db"
+    db_url = data.get("db_url", "sqlite:///parking.db")
+
+    config = {
+        # OBLIGATORIU pentru Flask-SQLAlchemy, altfel dă eroarea pe care o vezi
+        "SQLALCHEMY_DATABASE_URI": db_url,
+        # opțional dar recomandat
+        "SQLALCHEMY_TRACK_MODIFICATIONS": False,
+        # cheie de dev (în producție o schimbi)
+        "SECRET_KEY": "dev-secret-key-change-me",
+        # din config.json (le vei folosi când faci harta)
+        "DEFAULT_ZOOM": data.get("default_zoom", 16),
+        "DEFAULT_CENTER": data.get("default_center", [44.435, 26.05]),
+    }
+
+    # TODO (restul lui Task 1):
+    # - poți adăuga aici setări diferite pentru "production", dacă e cazul
 
     return config
