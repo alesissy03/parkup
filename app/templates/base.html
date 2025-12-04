@@ -1,15 +1,63 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8" />
-  <title>{% block title %}ParkUPB{% endblock %}</title>
-  <!-- TODO (Task 4): include fișiere CSS (main.css, map.css) și Leaflet CSS -->
-  {% block head_extra %}{% endblock %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ParkUPB{% endblock %}</title>
+    
+    <!-- Leaflet CSS (for maps) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- App CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/map.css') }}">
+    {% block extra_css %}{% endblock %}
 </head>
 <body>
-  <!-- TODO (Task 4): structură generală header/main/footer -->
-  <main>
-    {% block content %}{% endblock %}
-  </main>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="navbar-brand">
+                <strong>🅿️ ParkUPB</strong>
+            </a>
+            <div class="navbar-links">
+                <!-- TODO: Task 5 - will be dynamic based on user auth -->
+                <a href="/" class="nav-link">Hartă</a>
+                <a href="/login" class="nav-link">Login</a>
+                <a href="/register" class="nav-link btn-primary-outline">Înregistrare</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-container">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 ParkUPB - Universitatea Politehnica București</p>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- App JavaScript -->
+    {% block scripts %}{% endblock %}
 </body>
 </html>

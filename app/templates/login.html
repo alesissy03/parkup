@@ -2,3 +2,66 @@
 formular email + parolă
 trimite POST către /api/auth/login
 afișează erori -->
+{% extends "base.html" %}
+
+{% block title %}ParkUPB - Login{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h1>🔐 Autentificare</h1>
+            <p>Conectează-te pentru a rezerva locuri de parcare</p>
+        </div>
+
+        <form class="auth-form" method="POST" action="/api/auth/login">
+            <!-- TODO: Task 5 - Connect to backend -->
+            
+            <div class="form-group">
+                <label class="form-label" for="email">Email</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    class="form-control" 
+                    placeholder="exemplu@stud.upb.ro"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="password">Parolă</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    class="form-control" 
+                    placeholder="••••••••"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">
+                    Intră în cont
+                </button>
+            </div>
+
+            <div class="form-footer">
+                <p>Nu ai cont? <a href="/register">Înregistrează-te aici</a></p>
+            </div>
+
+            <!-- Error display area -->
+            <div id="login-errors" class="error-container"></div>
+        </form>
+
+        <div class="auth-note">
+            <small>Task 5: Implementare autentificare</small>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+{% endblock %}

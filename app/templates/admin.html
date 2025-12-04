@@ -3,32 +3,111 @@ activează Leaflet.draw
 butoane pentru submit poligoane
 include admin_draw.js -->
 
-<!DOCTYPE html>
-<html lang="ro">
-  <head>
-    <meta charset="UTF-8" />
-    <title>ParkUPB – Admin</title>
-    <!-- TODO (Task 6, 11): include Leaflet + Leaflet.draw CSS, main.css, map.css -->
-  </head>
-  <body>
-    <div id="admin-app">
-      <div id="admin-map">
-        <!-- TODO (Task 6): harta cu Leaflet.draw pentru desenare poligoane -->
-      </div>
+{% extends "base.html" %}
 
-      <aside id="admin-sidebar">
-        <section id="admin-tools">
-          <!-- TODO (Task 6): butoane Save / Load poligoane -->
-          <h2>Unelte admin</h2>
-        </section>
+{% block title %}ParkUPB - Admin{% endblock %}
 
-        <section id="admin-stats">
-          <!-- TODO (Task 11): statistici (locuri libere/ocupate etc.) -->
-          <h2>Statistici</h2>
-        </section>
-      </aside>
+{% block extra_css %}
+<!-- Leaflet Draw CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="admin-container">
+    <!-- Map Section with Drawing Tools -->
+    <div class="admin-map-section">
+        <div id="admin-map" class="admin-map">
+            <!-- TODO: Task 6 - Leaflet map with drawing tools -->
+            <div class="map-placeholder">
+                <div class="placeholder-content">
+                    <h2>🗺️ Hartă Administrativă</h2>
+                    <p>Aici vei putea desena și edita locurile de parcare</p>
+                    <small>Task 6: Implementare desenare poligoane</small>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- TODO (Task 6, 11): include JS (Leaflet, Leaflet.draw, admin_draw.js) -->
-  </body>
-</html>
+    <!-- Admin Sidebar -->
+    <aside class="admin-sidebar">
+        <!-- Drawing Tools Section -->
+        <section class="sidebar-section">
+            <div class="section-header">
+                <h3>🛠️ Unelte desenare</h3>
+            </div>
+            <div class="section-content">
+                <!-- TODO: Task 6 - Drawing controls -->
+                <button class="btn btn-primary btn-block" disabled>
+                    💾 Salvează modificări
+                </button>
+                <button class="btn btn-secondary btn-block" disabled>
+                    📥 Încarcă poligoane
+                </button>
+                <button class="btn btn-danger btn-block" disabled>
+                    🗑️ Șterge selectate
+                </button>
+                <div class="tool-placeholder">
+                    <small>Task 6: Implementare unelte</small>
+                </div>
+            </div>
+        </section>
+
+        <!-- Parking Lot Management -->
+        <section class="sidebar-section">
+            <div class="section-header">
+                <h3>🏢 Gestionare parcări</h3>
+            </div>
+            <div class="section-content">
+                <div class="form-group">
+                    <label class="form-label">Nume parcare</label>
+                    <input type="text" class="form-control" placeholder="Ex: Parcare Cămin A" disabled>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Zonă campus</label>
+                    <select class="form-control" disabled>
+                        <option>Nord</option>
+                        <option>Sud</option>
+                        <option>Central</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics Section -->
+        <section class="sidebar-section">
+            <div class="section-header">
+                <h3>📊 Statistici</h3>
+            </div>
+            <div class="section-content">
+                <!-- TODO: Task 11 - Statistics -->
+                <div class="stat-card">
+                    <div class="stat-label">Total locuri</div>
+                    <div class="stat-value">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Locuri libere</div>
+                    <div class="stat-value stat-success">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Locuri ocupate</div>
+                    <div class="stat-value stat-danger">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Rezervări active</div>
+                    <div class="stat-value stat-warning">-</div>
+                </div>
+                <div class="tool-placeholder">
+                    <small>Task 11: Implementare statistici</small>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<!-- Leaflet Draw JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+<script src="{{ url_for('static', filename='js/admin_draw.js') }}"></script>
+{% endblock %}

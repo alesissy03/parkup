@@ -1,34 +1,97 @@
-<!DOCTYPE html>
-<html lang="ro">
-  <head>
-    <meta charset="UTF-8" />
-    <title>ParkUPB – Harta</title>
-    <!-- TODO (Task 4): include CSS (main.css, map.css) și Leaflet CSS -->
-  </head>
-  <body>
-    <div id="app">
-      <div id="map">
-        <!-- TODO (Task 7): harta Leaflet -->
-      </div>
+{% extends "base.html" %}
 
-      <aside id="sidebar">
-        <section id="auth-section">
-          <!-- TODO (Task 5): login / register / user info -->
-          <h2>Autentificare</h2>
-        </section>
+{% block title %}ParkUPB - Hartă Parcări{% endblock %}
 
-        <section id="filters-section">
-          <!-- TODO (Task 8): filtre după parking lot, status, tip -->
-          <h2>Filtre</h2>
-        </section>
-
-        <section id="reservations-section">
-          <!-- TODO (Task 7/9/10): rezervare curentă + rezervări anterioare -->
-          <h2>Rezervările mele</h2>
-        </section>
-      </aside>
+{% block content %}
+<div class="app-container">
+    <!-- Map Section (Left side - takes most space) -->
+    <div class="map-section">
+        <div id="map" class="map-container">
+            <!-- TODO: Task 7 - Leaflet map will be initialized here -->
+            <div class="map-placeholder">
+                <div class="placeholder-content">
+                    <h2>🗺️ Harta Parcărilor UPB</h2>
+                    <p>Harta va fi afișată aici</p>
+                    <small>Task 7: Implementare hartă Leaflet</small>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- TODO (Task 7): include JS (Leaflet + static/js/map.js, auth.js) -->
-  </body>
-</html>
+    <!-- Sidebar Section (Right side - info panel) -->
+    <aside class="sidebar">
+        <!-- User Info Section -->
+        <section class="sidebar-section">
+            <div class="section-header">
+                <h3>👤 Cont utilizator</h3>
+            </div>
+            <div class="section-content">
+                <!-- TODO: Task 5 - User authentication info -->
+                <div class="user-info-placeholder">
+                    <p>Nu ești autentificat</p>
+                    <a href="/login" class="btn btn-primary btn-block">Login</a>
+                    <a href="/register" class="btn btn-secondary btn-block">Înregistrare</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filters Section -->
+        <section class="sidebar-section">
+            <div class="section-header">
+                <h3>🔍 Filtre</h3>
+            </div>
+            <div class="section-content">
+                <!-- TODO: Task 8 - Filtering logic -->
+                <div class="filter-group">
+                    <label class="form-label">Parcare</label>
+                    <select class="form-control" disabled>
+                        <option>Toate parcările</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="form-label">Status</label>
+                    <select class="form-control" disabled>
+                        <option>Toate locurile</option>
+                    </select>
+                </div>
+                <div class="filter-placeholder">
+                    <small>Task 8: Implementare filtrare</small>
+                </div>
+            </div>
+        </section>
+
+        <!-- Current Reservation Section -->
+        <section class="sidebar-section">
+            <div class="section-header">
+                <h3>🚗 Rezervarea curentă</h3>
+            </div>
+            <div class="section-content">
+                <!-- TODO: Task 9 - Reservation logic -->
+                <div class="no-reservation">
+                    <p>Nu ai nicio rezervare activă</p>
+                    <small>Task 9: Implementare rezervare</small>
+                </div>
+            </div>
+        </section>
+
+        <!-- Past Reservations Section -->
+        <section class="sidebar-section">
+            <div class="section-header">
+                <h3>📋 Istoric rezervări</h3>
+            </div>
+            <div class="section-content">
+                <!-- TODO: Task 10 - Past reservations -->
+                <div class="empty-state">
+                    <p>Nu ai rezervări anterioare</p>
+                    <small>Task 10: Implementare istoric</small>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/map.js') }}"></script>
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+{% endblock %}
